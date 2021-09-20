@@ -56,10 +56,15 @@ Only the appartements with a number of lots < 2 are keepped
 Modification of certains types  
 Aggregation of duplicates (mean)  
 Creation of the column price/m² based on "Surface reelle bati" and 'Valeur fonciere'  
-Outliers removed on coherent price (articles, websites) and on the IQR method in each arrondissement separately  
+Outliers removed on coherent price (articles, websites) and on the IQR method in each arrondissement separately
+
+<p align="center">
+<img src="img/boxplot.PNG" alt="drawing" width="700"/>
+</p>
+
 Creation of an ID to merge shapefile_df : ```parcelles.shp``` a with data_paris : ```avaleursfoncieres-2020.txt```  
 
-3. ```Merge``` :  
+3. ```Merge``` :    
 
 Creation of the final Dataframe for the model training
 
