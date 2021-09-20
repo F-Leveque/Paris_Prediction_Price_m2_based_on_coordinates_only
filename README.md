@@ -6,7 +6,7 @@ The objectif is to develop an application to predict the price per m² in Paris 
 ##  Architecture
 
 The code is written in Python with the environment [VSC](https://code.visualstudio.com/docs/languages/python). The functions train and predict are both within the same file "application_paris.py".
-They can be called by using the needed function as [arguments](https://www.tutorialspoint.com/python/python_command_line_arguments.htm)of the program.
+They can be called by using the needed function as [arguments](https://www.tutorialspoint.com/python/python_command_line_arguments.htm)  of the program.
 
 ##  Requirements
 
@@ -26,37 +26,17 @@ They can be called by using the needed function as [arguments](https://www.tutor
 <img src="img/predict.PNG" alt="drawing" width="700"/>
 </p>
 
-In order to launch the creation of the Docker image, follow the instructions below :
+In order to launch the creation of the application in training mode, follow the instructions below :
 
-- Install [docker](https://www.docker.com/) (version 20.10.6) and run the application.
-
-- Download and extract the repository Packaging_classification_MNIST : Code -> Download .zip
-
-- Open a shell in the directory where the file ```Dockerfile``` is saved and run the command :
+- Open a shell in the directory where the file ```application_paris.py``` is saved and run the command :
 ```
-    $ docker build -t mnist-prediction:latest .
+    $ python3 application_paris.py train
 ```
-Wait until the process succeded in the creation of the Docker image.
+Wait until the process succeded in the creation of the model.
 
-- Run the command to start the container :
+- Run the command to start the prediction :
 ```
-    $ docker run -d -p 5000:5000 mnist-prediction
-```
-
-- Open your browser and use the following adress :
-```
-    http://localhost:5000/
-```
-
-- Use the Form to select your files and obtain your prediction ! (10 images from the test dataset are available in the folder images_test)
-
-<p align="center">
-<img src="img/app.JPG" alt="drawing" width="500"/>
-</p>
-
-- You can also obtain the prediction directly with the following command (example with images_test_2.jpg):
-```
-    $ curl --form file='@images_test_2.jpg' localhost:5000/api >> result.json
+    $ python3 application_paris.py predict
 ```
 
 ##  Workflow
