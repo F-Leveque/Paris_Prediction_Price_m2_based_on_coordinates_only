@@ -1,7 +1,11 @@
 # Paris_Prediction_Price_m2_based_on_coordinates_only
 
 ## Overview
-The objectif is to develop an application to predict the price per m² in Paris according to the position (x, y)
+The objectif is to develop an application to predict the price per m² in Paris according to the position (x, y).
+
+Question asked : Given a point in Paris (geographical coordinates), could you return an estimatation, as precise as possible, of the price per m2.
+
+To facilitate the definition of the given point, an API from the french government is asked to transform the adress in (x,y) coordinates according to the correct projection (Lambert 93).
 
 ##  Architecture
 
@@ -79,6 +83,9 @@ Creation of the final Dataframe for the model training
 
 
 ## Model and ameliorations
+
+The model used to predict the price per m² of an appartement in Paris is a KNeighborsRegressor. A StratifiedShuffleSplit method allowed to preserve the percentage of samples for each arrondissement. This is why, the latter column was keepped in the final dataset to provide train/test indices to split data in train/test sets with a stratified randomized method.  
+At the end, only the columns x and y were used to train the model with the price/m² as target.
 
 Classification model trained (accuracy on test dasaset 98.6%) : SVM deg 4 polynomial + deskewing preprocessing  
 Data accessible on the website http://yann.lecun.com/exdb/mnist/  
