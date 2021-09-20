@@ -48,7 +48,7 @@ The code is already detailed and explained, but the principal steps are the foll
 Reading of the file parcelles.shp, creation of a Dataframe
 
 <p align="center">
-<img src="img/paris.PNG" alt="drawing" width="700"/>
+<img src="img/paris.PNG" alt="drawing" width="500"/>
 </p>
 
 Transform Polynom coordinates into a single point : Centroid
@@ -64,7 +64,7 @@ Creation of the column price/m² based on "Surface reelle bati" and 'Valeur fonc
 Outliers removed on coherent price (articles, websites) and on the IQR method in each arrondissement separately
 
 <p align="center">
-<img src="img/boxplot.PNG" alt="drawing" width="700"/>
+<img src="img/boxplot.PNG" alt="drawing" width="650"/>
 </p>
 
 Creation of an ID to merge shapefile_df : ```parcelles.shp``` a with data_paris : ```avaleursfoncieres-2020.txt```  
@@ -74,7 +74,7 @@ Creation of an ID to merge shapefile_df : ```parcelles.shp``` a with data_paris 
 Creation of the final Dataframe for the model training
 
 <p align="center">
-<img src="img/df_final.PNG" alt="drawing" width="700"/>
+<img src="img/df_final.PNG" alt="drawing" width="500"/>
 </p>
 
 
@@ -86,13 +86,13 @@ Train data : train-images-idx3-ubyte.gz + train-labels-idx1-ubyte.gz
 Test data : t10k-images-idx3-ubyte.gz + t10k-labels-idx1-ubyte.gz
 
 ## Data used
-List of real estate transactions carried out throughout France since 2014 : https://www.data.gouv.fr/en/datasets/r/90a98de0-f562-4328-aa16-fe0dd1dca60f  
-Documentation linked : https://www.data.gouv.fr/en/datasets/r/d573456c-76eb-4276-b91c-e6b9c89d6656  
-List of cadastral parcels in Paris : https://cadastre.data.gouv.fr/data/etalab-cadastre/2021-04-01/shp/departements/75/cadastre-75-parcelles-shp.zip  
+- List of real estate transactions carried out throughout France since 2014 : https://www.data.gouv.fr/en/datasets/r/90a98de0-f562-4328-aa16-fe0dd1dca60f  
+- Documentation linked : https://www.data.gouv.fr/en/datasets/r/d573456c-76eb-4276-b91c-e6b9c89d6656  
+- List of cadastral parcels in Paris : https://cadastre.data.gouv.fr/data/etalab-cadastre/2021-04-01/shp/departements/75/cadastre-75-parcelles-shp.zip  
 
 
 ##  References
-Shapefile : https://gist.github.com/aerispaha/f098916ac041c286ae92d037ba5c37ba  
-Sklearn_KNeighborsRegressor : https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html    
-Maximum price per m² in paris : https://hureauxarnaud.medium.com/projet-estimateur-de-prix-dun-bien-immobilier-bas%C3%A9-sur-du-machine-learning-ae578fdacaca
+- Shapefile : https://gist.github.com/aerispaha/f098916ac041c286ae92d037ba5c37ba  
+- Sklearn_KNeighborsRegressor : https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html    
+- Maximum price per m² in paris : https://hureauxarnaud.medium.com/projet-estimateur-de-prix-dun-bien-immobilier-bas%C3%A9-sur-du-machine-learning-ae578fdacaca
 
