@@ -5,7 +5,7 @@ The objectif is to develop an application to predict the price per m² in Paris 
 
 Question asked : Given a point in Paris (geographical coordinates), could you return an estimatation, as precise as possible, of the price per m2.
 
-To facilitate the definition of the given point, an API from the french government is asked to transform the adress in (x,y) coordinates according to the correct projection (Lambert 93).
+To facilitate the definition of the given point, an [API](https://geo.api.gouv.fr/adresse) from the french government is requested to transform the adress in (x,y) coordinates according to the correct projection (Lambert 93).
 
 ##  Architecture
 
@@ -84,13 +84,20 @@ Creation of the final Dataframe for the model training
 
 ## Model and ameliorations
 
+1. Model definition :  
 The model used to predict the price per m² of an appartement in Paris is a KNeighborsRegressor. A StratifiedShuffleSplit method allowed to preserve the percentage of samples for each arrondissement. This is why, the latter column was keepped in the final dataset to provide train/test indices to split data in train/test sets with a stratified randomized method.  
-At the end, only the columns x and y were used to train the model with the price/m² as target.
+At the end, only the columns x and y were used to train the model with the price/m² as target.  
 
-Classification model trained (accuracy on test dasaset 98.6%) : SVM deg 4 polynomial + deskewing preprocessing  
-Data accessible on the website http://yann.lecun.com/exdb/mnist/  
-Train data : train-images-idx3-ubyte.gz + train-labels-idx1-ubyte.gz  
-Test data : t10k-images-idx3-ubyte.gz + t10k-labels-idx1-ubyte.gz
+
+10% of the dataset were defined for the test set, while 90% of the data were used to train the model. An iteration on the Hyperparameter k from 1 to 300 allowed to define which one is the best suited for the model. The metric used is the [mean absolute percentage error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_percentage_error.html).  
+
+
+Finally, the best Hyperparameter for the model is k = 32 with a mean absolute percentage error of 13.9%.
+
+2. Discussion :  
+Many improvements can be made to the model. Only the coordinates are used and all the others features present in the dataset are only used to create the id, allowing the merge with the shapefile. We can directly observe a bias when we are looking for an appartement of 20m² with 2 pieces and the neighbors are some of 100m² (observation possible in the other way also). We know that the price can be impacted by the arrondissement, a feature enginnering which can take into consideration this impact would add a great amelioration on the model (we can think of a clustering to create the latter feature). We started with 17.000 observations in Paris but at the end, only 8700 were usable, a large part located in the 18 arrondissement. The lack of data uniformly located on paris add an other bias when we consider only, the close neighbors.
+
+We obtain a model, which predicts a naive value that is, after all, not so far from the reality on the ground (prediction given with its confidence interva).
 
 ## Data used
 - List of real estate transactions carried out throughout France since 2014 : https://www.data.gouv.fr/en/datasets/r/90a98de0-f562-4328-aa16-fe0dd1dca60f  
