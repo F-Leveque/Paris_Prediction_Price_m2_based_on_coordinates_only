@@ -39,15 +39,28 @@ Wait until the process succeded in the creation of the model.
     $ python3 application_paris.py predict
 ```
 
-##  Workflow
+##  Pretraitement
+The code is already detailed and explained, but the principal steps are the followgin :
 
-At the root of the project, you find the file ```backend.py``` containing the classifier code, the pipeline preprocessing and the training method. 
-The Flask application is coded in the file ```app.py```. You find also the Dockerfile (with the requirements) for the creation of the Docker image.
+- Reading of the file parcelles.shp, creation of a Dataframe
+- Transform Polynom coordinates into a single point : Centroid
 
-- The docker container launches the Flask application, accessible at the adress [http://localhost:5000](http://localhost:5000/), in your web browser.
-- The File Selection Form is available and will send the images selected to the encapsulated server.
-- The Classifier (under the ```backend.py``` file) is then called and realize the prediction.
-- The server returns the prediction in a json file.
+- Reading of the file valeursfoncieres-2020.txt
+- Drop of the columns with many missing values
+- Only the appartements with a number of lots < 2 are keepped
+- Modification of certains types
+- Aggregation of duplicates (mean)
+- Creation of the column price/m² based on "Surface reelle bati" and 'Valeur fonciere'
+- Outliers removed on coherent price (articles, websites) and on the IQR method in each arrondissement separately
+- Creation of an ID to merge shapefile_df : ```aparcelles.shp```a with data_paris : ```avaleursfoncieres-2020.txt```
+- Creation of the final Dataframe for the model training
+
+
+## Model and ameliorations
+Classification model trained (accuracy on test dasaset 98.6%) : SVM deg 4 polynomial + deskewing preprocessing  
+Data accessible on the website http://yann.lecun.com/exdb/mnist/  
+Train data : train-images-idx3-ubyte.gz + train-labels-idx1-ubyte.gz  
+Test data : t10k-images-idx3-ubyte.gz + t10k-labels-idx1-ubyte.gz
 
 ## Data used
 Classification model trained (accuracy on test dasaset 98.6%) : SVM deg 4 polynomial + deskewing preprocessing  
@@ -56,7 +69,4 @@ Train data : train-images-idx3-ubyte.gz + train-labels-idx1-ubyte.gz
 Test data : t10k-images-idx3-ubyte.gz + t10k-labels-idx1-ubyte.gz  
 
 ##  References
-- https://stackoverflow.com/questions/40427435/extract-images-from-idx3-ubyte-file-or-gzip-via-python
-- https://stackoverflow.com/questions/43577665/deskew-mnist-images
-- https://aws.amazon.com/fr/ecr/
-- https://aws.amazon.com/fr/ecs/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc&ecs-blogs.sort-by=item.additionalFields.createdDate&ecs-blogs.sort-order=desc
+
