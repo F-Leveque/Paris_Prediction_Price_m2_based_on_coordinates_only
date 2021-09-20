@@ -43,21 +43,24 @@ Wait until the process succeded in the creation of the model.
 ##  Pretraitement
 The code is already detailed and explained, but the principal steps are the followgin :
 
-1.  ```parcelles.shp```
+1.  ```parcelles.shp``` :  
+
 Reading of the file parcelles.shp, creation of a Dataframe
 Transform Polynom coordinates into a single point : Centroid
 
-2. ```avaleursfoncieres-2020.txt```
-Reading of the file valeursfoncieres-2020.txt
-Drop of the columns with many missing values
-Only the appartements with a number of lots < 2 are keepped
-Modification of certains types
-Aggregation of duplicates (mean)
-Creation of the column price/m² based on "Surface reelle bati" and 'Valeur fonciere'
-Outliers removed on coherent price (articles, websites) and on the IQR method in each arrondissement separately
-Creation of an ID to merge shapefile_df : ```parcelles.shp``` a with data_paris : ```avaleursfoncieres-2020.txt```
+2. ```avaleursfoncieres-2020.txt``` :  
+ 
+Reading of the file valeursfoncieres-2020.txt  
+Drop of the columns with many missing values  
+Only the appartements with a number of lots < 2 are keepped  
+Modification of certains types  
+Aggregation of duplicates (mean)  
+Creation of the column price/m² based on "Surface reelle bati" and 'Valeur fonciere'  
+Outliers removed on coherent price (articles, websites) and on the IQR method in each arrondissement separately  
+Creation of an ID to merge shapefile_df : ```parcelles.shp``` a with data_paris : ```avaleursfoncieres-2020.txt```  
 
-3. ```Merge```
+3. ```Merge``` :  
+
 Creation of the final Dataframe for the model training
 
 
