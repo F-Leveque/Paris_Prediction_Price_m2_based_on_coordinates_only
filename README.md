@@ -46,6 +46,11 @@ The code is already detailed and explained, but the principal steps are the foll
 1.  ```parcelles.shp``` :  
 
 Reading of the file parcelles.shp, creation of a Dataframe
+
+<p align="center">
+<img src="img/paris.PNG" alt="drawing" width="700"/>
+</p>
+
 Transform Polynom coordinates into a single point : Centroid
 
 2. ```avaleursfoncieres-2020.txt``` :  
@@ -68,8 +73,13 @@ Creation of an ID to merge shapefile_df : ```parcelles.shp``` a with data_paris 
 
 Creation of the final Dataframe for the model training
 
+<p align="center">
+<img src="img/df_final.PNG" alt="drawing" width="700"/>
+</p>
+
 
 ## Model and ameliorations
+
 Classification model trained (accuracy on test dasaset 98.6%) : SVM deg 4 polynomial + deskewing preprocessing  
 Data accessible on the website http://yann.lecun.com/exdb/mnist/  
 Train data : train-images-idx3-ubyte.gz + train-labels-idx1-ubyte.gz  
