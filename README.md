@@ -1,25 +1,29 @@
 # Paris_Prediction_Price_m2_based_on_coordinates_only
 
 ## Overview
-The objectif is to develop and package, in a running docker container, a classification application for MNIST data.
+The objectif is to develop an application to predict the price per m² in Paris according to the position (x, y)
 
 ##  Architecture
 
-All the architecture is encapsulated in a [docker](https://www.docker.com/) container. It allows to any user to install the application, upload an image from the test_dataset [MNIST](http://yann.lecun.com/exdb/mnist/) and obtain the prediction of the number written on (prediction returned in a json file).
-
-A simple web inteface has been developped (Flask framework) allowing the user to select the files used for prediction.
+The code is written in Python with the environment [VSC](https://code.visualstudio.com/docs/languages/python). The functions train and predict are both within the same file "application_paris.py".
+They can be called by using the needed function as [arguments](https://www.tutorialspoint.com/python/python_command_line_arguments.htm)of the program.
 
 ##  Requirements
 
-* [Docker Engine](https://docs.docker.com/install/) (version 20.10.6)
-* 2.5 GB de RAM
+* [Pandas](https://pandas.pydata.org/docs/getting_started/install.html) (version 1.2.4)
+* [Numpy](https://numpy.org/install/) (version 1.20.1)
+* [Shapefile](https://pypi.org/project/pyshp/) (version 2.1.3)
+* [Sklearn](https://scikit-learn.org/stable/install.html) (version 0.24.1)
+* [Requests](https://pypi.org/project/requests/) (version 2.25.1)
+* [Joblib](https://joblib.readthedocs.io/en/latest/installing.html) (version 1.0.1)
+* [Pickle](https://pypi.org/project/pickle-mixin/) (version 4.0)
 
-##  Setup
+##  Call visualization
 <p align="center">
-<img src="img/train.PNG" alt="drawing" width="500"/>
+<img src="img/train.PNG" alt="drawing" width="700"/>
 </p>
 <p align="center">
-<img src="img/predict.PNG" alt="drawing" width="500"/>
+<img src="img/predict.PNG" alt="drawing" width="700"/>
 </p>
 
 In order to launch the creation of the Docker image, follow the instructions below :
