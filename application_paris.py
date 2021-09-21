@@ -70,7 +70,7 @@ def main():
         shapefile_df.to_pickle("./shapefile_df.pkl")
         
         print("Reading file valeursfoncieres-2020.txt")
-        data = pd.read_csv('../valeursfoncieres-2020.txt', sep="|", low_memory=False)
+        data = pd.read_csv('valeursfoncieres-2020.txt', sep="|", low_memory=False)
         
         print("Pretreatment file valeursfoncieres-2020.txt")
         data_paris = data[data["Code departement"]=='75'].copy()
