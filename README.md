@@ -42,7 +42,7 @@ Wait until the process succeded in the creation of the model.
 ```
     $ python3 application_paris.py predict
 ```
-- Enter a adress in Paris, when asked, to obtain the prediction
+- Enter an adress in Paris, when asked, to obtain the prediction
 
 ##  Pretraitement
 The code is already detailed and explained, but the principal steps are the followgin :
